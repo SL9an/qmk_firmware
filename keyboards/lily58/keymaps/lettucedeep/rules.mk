@@ -16,14 +16,26 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight. 
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 OLED_DRIVER_ENABLE= yes     # OLED display
+WPM_ENABLE = yes            # supplies get_current_wpm function for bongocat
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 
+TAP_DANCE_ENABLE = no
+STENO_ENABLE = no
+TERMINAL_ENABLE = no
+GRAVE_ESC_ENABLE = no
+MAGIC_ENABLE = no
+SPACE_CADET_ENABLE = no
+KEY_LOCK_ENABLE = no
+AUDIO_ENABLE = no
+CONSOLE_ENABLE = no
+VELOCIKEY_ENABLE = no
+
 # If you want to change the display of OLED, you need to change here
-SRC +=  ./lib/rgb_state_reader.c \
-        ./lib/layer_state_reader.c \
-        ./lib/logo_reader.c \
+# SRC +=  ./lib/layer_state_reader.c \
+        # ./lib/rgb_state_reader.c \
+        # ./lib/logo_reader.c \
         # ./lib/keylogger.c \
         # ./lib/mode_icon_reader.c \
         # ./lib/host_led_state_reader.c \
