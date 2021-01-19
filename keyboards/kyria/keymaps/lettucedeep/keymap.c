@@ -44,14 +44,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   LShift | Ctrl | Alt  |      |      |      |      |      |  |      |      |      |      |      |  Alt | Ctrl |RShift  |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |MEDIA | LOWER| Space| Enter|  | Del  | Bspc |LOWER |MEDIA | RGB  |
- *                        |      |      |      |NUMBER|      |  |      |SYMBOL|      |      |      |
+ *                        |      |      |      |NUMBER|SYMBOL|  |NUMBER|SYMBOL|      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
       KC_TAB,                  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
       LCTL_T(KC_ESC),          KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RCTL_T(KC_QUOT),
-      LSFT_T(KC_GRV),         LCTL_T(KC_Z),   LALT_T(KC_X),   KC_C,   KC_V,   KC_B,  KC_LGUI, XXXXXXX, XXXXXXX, XXXXXXX, KC_N,    KC_M,   KC_COMM, RALT_T(KC_DOT), RCTL_T(KC_SLSH), RSFT_T(KC_TILD),
-                               XXXXXXX, MO(_MEDIA), MO(_LOWER), LT(_NUMBER, KC_SPC), KC_ENT, KC_DEL, LT(_SYMBOL, KC_BSPC), MO(_LOWER),  MO(_MEDIA), MO(_RGB)
+      LSFT_T(KC_GRV), LCTL_T(KC_Z), LALT_T(KC_X),KC_C, KC_V,   KC_B,  KC_LGUI, XXXXXXX,         XXXXXXX, XXXXXXX, KC_N,    KC_M,   KC_COMM, RALT_T(KC_DOT), RCTL_T(KC_SLSH), RSFT_T(KC_TILD),
+           XXXXXXX, MO(_MEDIA), MO(_LOWER), LT(_NUMBER, KC_SPC), LT(_SYMBOL, KC_ENT),           LT(_NUMBER, KC_DEL), LT(_SYMBOL, KC_BSPC), MO(_LOWER),  MO(_MEDIA), MO(_RGB)
     ),
  /*
   * Base Layer: GAME
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
        KC_LCTL, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, KC_RCTL,
        _______, KC_Z   , KC_X   , _______, _______, _______, _______, _______, KC_ESC , _______, _______, _______, _______, KC_DOT , KC_SLSH, _______,
-                                  _______, _______, _______, KC_SPC , MO(_NUMBER), MO(_SYMBOL), KC_BSPC, _______, _______, _______
+                                  _______, _______, _______, KC_SPC , MO(_NUMBER), _______, _______, _______, _______, _______
      ),
 /*
  * Lower Layer
