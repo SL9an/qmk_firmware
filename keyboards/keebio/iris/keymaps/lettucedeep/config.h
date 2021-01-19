@@ -24,7 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
 #undef IGNORE_MOD_TAP_INTERRUPT
-#define IGNORE_MOD_TAP_INTERRUPT
+/* #define IGNORE_MOD_TAP_INTERRUPT */
+#undef PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 2
 
