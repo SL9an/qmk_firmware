@@ -31,12 +31,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define USE_I2C
 #define USE_SERIAL_PD2
 #define RGBLIGHT_SLEEP
+
 #undef TAPPING_TERM
-#define TAPPING_TERM 200
+#define TAPPING_TERM 350
 #undef IGNORE_MOD_TAP_INTERRUPT
-/* #define IGNORE_MOD_TAP_INTERRUPT */
+#define IGNORE_MOD_TAP_INTERRUPT
 #undef PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD
+#undef TAPPING_FORCE_HOLD
+#define TAPPING_FORCE_HOLD
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 2
 
