@@ -108,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_MEDIA] = LAYOUT(
-      _______, _______, KC_BRIU, KC_BRID, _______, _______,                                     _______, _______, KC_BRIU, KC_BRID, _______, _______,
-      _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______,                                     _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
-      _______, KC_MSTP, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______,
+      _______, KC_BRIU, KC_BRID, _______, _______, _______,                                     _______, _______, _______, KC_BRIU, KC_BRID, _______,
+      _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______,                                     _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______,
+      KC_MSTP, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 /*
