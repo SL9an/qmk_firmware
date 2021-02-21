@@ -32,7 +32,7 @@ uint8_t current_tap_frame = 0;
 /* static uint16_t old_underglow_level = -1; */
 /* static bool led_on = true; */
 /* static uint8_t led_timeout = 10; // Minutes */
-static long int oled_timeout = 60000; // 1 minutes
+static long int oled_timeout = 50000; // 50s?
 
 extern uint8_t is_master;
 
@@ -65,8 +65,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 	[_LOWER] = LAYOUT(
         KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F11, KC_F12, KC_END, KC_HOME, KC_NO, KC_PSCR, KC_NO,
-        KC_CAPS, KC_HOME, KC_LEFT, KC_UP, KC_RGHT, KC_PGUP, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_BTN4, KC_BTN5,
+        KC_NO, KC_NO, KC_NLCK, KC_CAPS, KC_SLCK, KC_F11, KC_F12, KC_END, KC_HOME, KC_NO, KC_PSCR, KC_NO,
+        KC_NO, KC_HOME, KC_LEFT, KC_UP, KC_RGHT, KC_PGUP, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_BTN4, KC_BTN5,
         TO(_MOUSE), KC_END, KC_BTN4, KC_DOWN, KC_BTN5, KC_PGDN, TO(_QWERTY), TO(_GAME), KC_NO, KC_PGDN, KC_PGUP, RCTL(KC_Q), RCTL(KC_W), TO(_MOUSE),
         KC_NO, TO(_NUMPAD), KC_TRNS, KC_ENT, KC_DEL, KC_TRNS, TO(_NUMPAD), KC_NO
     ),
