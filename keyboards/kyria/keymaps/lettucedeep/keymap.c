@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_MEDIA] = LAYOUT(
-      _______, KC_BRIU, KC_BRID, _______, _______, _______,                                     _______, _______, _______, KC_BRIU, KC_BRID, _______,
+      _______, KC_BRID, KC_BRIU, _______, _______, _______,                                     _______, _______, _______, KC_BRID, KC_BRIU, _______,
       _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______,                                     _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______,
       KC_MSTP, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   */
      [_SYMBOL] = LAYOUT(
        _______, _______, _______, KC_UNDS, KC_MINS, _______,                                     _______, KC_PLUS, KC_EQL , _______, _______, _______,
-       KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS,
+       KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
        _______, KC_LABK, KC_LBRC, KC_LCBR, KC_LPRN, _______, _______, _______, _______, _______, _______, KC_RPRN, KC_RCBR, KC_RBRC, KC_RABK, _______,
                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
      ),
