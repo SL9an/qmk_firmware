@@ -13,6 +13,8 @@
 #define TAPPING_FORCE_HOLD
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 2
+#undef QUICK_TAP_TERM
+#define QUICK_TAP_TERM 0
 
 // user mouse key settings
 #ifdef MOUSEKEY_ENABLE
@@ -28,10 +30,15 @@
 
 // oled timeout (in ms)
 #ifdef OLED_ENABLE
-#  define OLED_TIMEOUT 30000
+#  define OLED_TIMEOUT 60000
 #endif
 
 // rgb matrix timeout (in ms)
 #ifdef RGB_MATRIX_ENABLE
-#  define RGB_MATRIX_TIMEOUT 30000
+#  define RGB_MATRIX_TIMEOUT 60000
+#endif
+
+// rgb backlight timeout (in ms)
+#ifdef RGBLIGHT_ENABLE
+#  define RGBLIGHT_TIMEOUT 60000
 #endif
