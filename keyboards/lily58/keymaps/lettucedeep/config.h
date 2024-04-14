@@ -22,49 +22,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define USE_MATRIX_I2C
 
-/* Select hand configuration */
-
-// #define MASTER_LEFT
-#define MASTER_RIGHT
-// #define EE_HANDS
-
-// #define USE_I2C
-#define USE_SERIAL_PD2
-#define RGBLIGHT_SLEEP
-
-#undef TAPPING_TERM
-#define TAPPING_TERM 350
-#undef IGNORE_MOD_TAP_INTERRUPT
-#define IGNORE_MOD_TAP_INTERRUPT
-#undef PERMISSIVE_HOLD
-#define PERMISSIVE_HOLD
-#undef TAPPING_FORCE_HOLD
-#define TAPPING_FORCE_HOLD
-#undef TAPPING_TOGGLE
-#define TAPPING_TOGGLE 2
-
-#define MOUSEKEY_DELAY 0
-#define MOUSEKEY_MAX_SPEED 15
-#define MOUSEKEY_INTERVAL 15
-#define MOUSEKEY_TIME_TO_MAX 80
-#define MOUSEKEY_WHEEL_DELAY 150
-#define MOUSEKEY_WHEEL_INTERVAL 100
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 30
-#define MOUSEKEY_WHEEL_MAX_SPEED 10
-
-
-// #undef RGBLED_NUM
-// #define RGBLIGHT_ANIMATIONS
-// #define RGBLED_NUM 27
-// #define RGBLIGHT_LIMIT_VAL 120
-// #define RGBLIGHT_HUE_STEP 10
-// #define RGBLIGHT_SAT_STEP 17
-// #define RGBLIGHT_VAL_STEP 17
-
-// Underglow
-/*
-#undef RGBLED_NUM
-#define RGBLED_NUM 14    // Number of LEDs
-#define RGBLIGHT_ANIMATIONS
-#define RGBLIGHT_SLEEP
-*/
+//#define USE_I2C
+//#define USE_SERIAL_PD2
