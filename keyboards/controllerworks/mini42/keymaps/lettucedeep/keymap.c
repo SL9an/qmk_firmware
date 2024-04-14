@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_H,RGUI_T(KC_J),RSFT_T(KC_K),RALT_T(KC_L),RCTL_T(KC_SCLN), KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LGUI,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, MO(_MEDIA),
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                MO(_MEDIA), MO(_NAV), LT(_NUMBER, KC_SPC),  LT(_SYMBOL, KC_BSPC), MO(_NAV), MO(_RGB)
                                       //`--------------------------'  `--------------------------'
@@ -105,27 +105,36 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_180;
+    //return OLED_ROTATION_180;
+    if (is_keyboard_master()) {
+        return OLED_ROTATION_180;
+    }
+    return rotation;
 }
 
 
 static void render_billboard(void) {
-    oled_write_P(PSTR("   controller.works\n"), false);
-    oled_write_P(PSTR("   mini42<:CRKBD\n"), false);
-    oled_write_P(PSTR("   QMK\n"), false);
+    // board info
+    oled_write_P(PSTR("controller.works\n"), false);
+    oled_write_P(PSTR("mini42<:CRKBD\n"), false);
+    oled_write_P(PSTR("QMK Firmware\n"), false);
+    // mod status
+    uint8_t mods = get_mods();
+    oled_write_P((mods & MOD_MASK_CTRL) ? PSTR("CTRL ") : PSTR("     "), false);
+    oled_write_P((mods & MOD_MASK_ALT) ? PSTR("ALT ") : PSTR("    "), false);
+    oled_write_P((mods & MOD_MASK_SHIFT) ? PSTR("SHIFT ") : PSTR("      "), false);
+    oled_write_P((mods & MOD_MASK_GUI) ? PSTR("GUI") : PSTR("   "), false);
+    oled_write_P(PSTR("\n"), false);
 }
 
 
-//
-// Render left OLED display
-// 
+// Render Master OLED display
 static void render_status(void) {
 
     // Layer indicator
     oled_write_P(PSTR("   layer:  "), false);
 
     switch (get_highest_layer(layer_state)) {
-        // Layer qwerty
 	case _BASE:
             oled_write_P(PSTR("BASE"), false);
             break;
@@ -147,16 +156,17 @@ static void render_status(void) {
        default:
            oled_write_P(PSTR("undefined"), false);
            break;
-   }
+    }
+    //oled_write_P(PSTR("\n"), false);
 
-   // Host Keyboard LED Status
-   uint8_t led_usb_state = host_keyboard_leds();
-   oled_write_P(PSTR("\n   numlck: "), false);
-   oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK) ? PSTR("ON") : PSTR("--"), false);
-   oled_write_P(PSTR("\n   caplck: "), false);
-   oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("ON") : PSTR("--"), false);
-   oled_write_P(PSTR("\n   scrlck: "), false);
-   oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("ON") : PSTR("--"), false);
+    // Host Keyboard LED Status
+    uint8_t led_usb_state = host_keyboard_leds();
+    oled_write_P(PSTR("\n   numlck: "), false);
+    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(PSTR("\n   caplck: "), false);
+    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(PSTR("\n   scrlck: "), false);
+    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("ON") : PSTR("--"), false);
 }
 
 
