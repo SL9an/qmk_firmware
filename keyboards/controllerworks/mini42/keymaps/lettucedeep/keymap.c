@@ -69,6 +69,7 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
   [_NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, XXXXXXX, KC_NUM, KC_CAPS, KC_SCRL,  XXXXXXX,                      XXXXXXX,  KC_END, KC_HOME, XXXXXXX, KC_PSCR, XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, KC_HOME, KC_LEFT,   KC_UP, KC_RGHT, KC_PGUP,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_END, KC_BTN4, KC_DOWN, KC_BTN5, KC_PGDN,                      XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX,
