@@ -106,7 +106,6 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    //return OLED_ROTATION_180;
     if (is_keyboard_master()) {
         return OLED_ROTATION_180;
     }
