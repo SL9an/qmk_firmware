@@ -17,6 +17,8 @@
 
 #pragma once
 
+#define MASTER_RIGHT
+
 #define WS2812_PIO_USE_PIO1
 #define RGBLED_NUM 54
 #define RGB_MATRIX_LED_COUNT RGBLED_NUM
@@ -33,6 +35,3 @@
 #undef I2C1_SDA_PIN
 #define I2C1_SDA_PIN GP24
 
-/* #define EE_HANDS  */
-/* #define MASTER_LEFT */
-/* #define MASTER_RIGHT */

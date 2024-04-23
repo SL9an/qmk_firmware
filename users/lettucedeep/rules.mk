@@ -1,4 +1,6 @@
 NKRO_ENABLE = yes           # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+LTO_ENABLE = yes
+MOUSEKEY_ENABLE = yes
 
 # added from j-inc
 TAP_DANCE_ENABLE = no

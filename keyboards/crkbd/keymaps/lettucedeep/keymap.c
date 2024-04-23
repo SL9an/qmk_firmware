@@ -1,24 +1,24 @@
 /*
- * Copyright 2022 Kevin Gee <info@controller.works>
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-#include QMK_KEYBOARD_H
+Copyright 2019 @foostan
+Copyright 2020 Drashna Jaelre <@drashna>
 
-#ifdef OLED_ENABLE
-    #include "oled.c"
-#endif
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include QMK_KEYBOARD_H
+#include <stdio.h>
+#include "oled.c"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -33,7 +33,7 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
                                MO(_MEDIA), MO(_NAV), LT(_NUMBER, KC_SPC),  LT(_SYMBOL, KC_BSPC), MO(_NAV), MO(_RGB)
                                       //`--------------------------'  `--------------------------'
 
-  ),
+  ),  
 
   [_NUMBER] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -45,7 +45,7 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX, _______,     KC_DEL, XXXXXXX, XXXXXXX
                                       //`--------------------------'  `--------------------------'
-  ),
+  ),  
 
   [_SYMBOL] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -57,7 +57,7 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX,  KC_ENT,     _______, XXXXXXX, XXXXXXX
                                       //`--------------------------'  `--------------------------'
-  ),
+  ),  
 
 
   [_NAV] = LAYOUT_split_3x6_3(
@@ -71,8 +71,7 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
                                           XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
-
-  [_MEDIA] = LAYOUT_split_3x6_3(
+    [_MEDIA] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, KC_BRID, KC_BRIU, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -97,11 +96,10 @@ LCTL_T(KC_ESC),LCTL_T(KC_A),LALT_T(KC_S),LSFT_T(KC_D),LGUI_T(KC_F),KC_G,     KC_
   )
 };
 
-
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master()) {
-        return OLED_ROTATION_180;
+      return OLED_ROTATION_0;
     }
     return rotation;
 }
@@ -109,11 +107,11 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        render_status();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
+        render_status();
     } else {
-	render_billboard(PSTR("controller.works\n"), PSTR("mini42<:crkbd\n"), PSTR("QMK Firmware\n"));
+	render_billboard(PSTR("foostan\n"), PSTR("Corne Keyboard\n"), PSTR("QMK Firmware\n"));
     }
     return false;
 }
 
-#endif
+#endif // OLED_ENABLE

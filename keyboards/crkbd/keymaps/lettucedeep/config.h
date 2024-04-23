@@ -22,7 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define USE_MATRIX_I2C
 
-//#define USE_I2C
-//#define USE_SERIAL_PD2
+#define MASTER_RIGHT
+
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
 #undef SPLIT_LED_STATE_ENABLE

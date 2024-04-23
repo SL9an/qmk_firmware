@@ -1,14 +1,8 @@
 #include QMK_KEYBOARD_H
 
 
-enum layer_number {
-  _BASE = 0,
-  _NAV,
-  _SYMBOL,
-  _NUMBER,
-  _MEDIA,
-  _QMK,
-};
+#include <stdio.h>
+#include "oled.c"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -17,7 +11,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                               KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_BSLS,  
         LCTL_T(KC_ESC), LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G, KC_H, RGUI_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT,  
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX,                       XXXXXXX, KC_N,   KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,  
-        XXXXXXX, MO(_MEDIA), MO(_NAV), LT(_NUMBER, KC_SPC),                         LT(_SYMBOL, KC_BSPC), MO(_NAV), XXXXXXX, MO(_QMK)
+        XXXXXXX, MO(_MEDIA), MO(_NAV), LT(_NUMBER, KC_SPC),                         LT(_SYMBOL, KC_BSPC), MO(_NAV), XXXXXXX, MO(_RGB)
     ),
 	[_NAV] = LAYOUT(
         KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
@@ -47,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP,
         KC_NO, _______, KC_NO, KC_NO, KC_NO, KC_NO, _______, KC_NO
     ),
-	[_QMK] = LAYOUT(
+	[_RGB] = LAYOUT(
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_RBT,
@@ -69,70 +63,12 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 
-// Render left OLED display
-static void render_status(void) {
-
-    // Layer indicator
-    oled_write_P(PSTR("   layer:  "), false);
-
-    switch (get_highest_layer(layer_state)) {
-        case _BASE:
-            oled_write_P(PSTR("BASE"), false);
-            break;
-        case _NAV:
-            oled_write_P(PSTR("NAV"), false);
-            break;
-        case _SYMBOL:
-            oled_write_P(PSTR("SYMBOL"), false);
-            break;
-        case _NUMBER:
-            oled_write_P(PSTR("NUMBER"), false);
-            break;
-        case _MEDIA:
-            oled_write_P(PSTR("MEDIA"), false);
-            break;
-        case _QMK:
-            oled_write_P(PSTR("QMK"), false);
-            break;
-        default:
-            oled_write_P(PSTR("undefined"), false);
-            break;
-    }
-
-    // Host Keyboard LED Status
-    uint8_t led_usb_state = host_keyboard_leds();
-    oled_write_P(PSTR("\n   numlck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK) ? PSTR("ON") : PSTR("--"), false);
-    oled_write_P(PSTR("\n   caplck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("ON") : PSTR("--"), false);
-    oled_write_P(PSTR("\n   scrlck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("ON") : PSTR("--"), false);
-
-}
-
-
-// Render billboard
-static void render_billboard(void) {
-    // board info
-    oled_write_P(PSTR("kata0510 & ergohaven\n"), false);
-    oled_write_P(PSTR("Lily58 Pro\n"), false);
-    oled_write_P(PSTR("QMK Firmware\n"), false);
-    // mod status
-    uint8_t mods = get_mods();
-    oled_write_P((mods & MOD_MASK_CTRL) ? PSTR("CTRL ") : PSTR("     "), false);
-    oled_write_P((mods & MOD_MASK_ALT) ? PSTR("ALT ") : PSTR("    "), false);
-    oled_write_P((mods & MOD_MASK_SHIFT) ? PSTR("SHIFT ") : PSTR("      "), false);
-    oled_write_P((mods & MOD_MASK_GUI) ? PSTR("GUI") : PSTR("   "), false);
-    oled_write_P(PSTR("\n"), false);
-}
-
-
 // OLED display rendering
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         render_status();
     } else {
-        render_billboard();
+        render_billboard(PSTR("kata0510 & ergohaven\n"), PSTR("Lily58 Pro\n"), PSTR("QMK Firmware\n"));
     }
     return false;
 }

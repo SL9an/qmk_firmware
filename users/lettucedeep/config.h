@@ -28,17 +28,23 @@
   #define MOUSEKEY_WHEEL_MAX_SPEED 10
 #endif
 
+// split keyboard oled data transfer
+#define SPLIT_TRANSPORT_MIRROR
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_LED_STATE_ENABLE
+#define SPLIT_MODS_ENABLE
+
 // oled timeout (in ms)
 #ifdef OLED_ENABLE
-#  define OLED_TIMEOUT 60000
+#  define OLED_TIMEOUT 50000
 #endif
 
 // rgb matrix timeout (in ms)
 #ifdef RGB_MATRIX_ENABLE
-#  define RGB_MATRIX_TIMEOUT 60000
+#  define RGB_MATRIX_TIMEOUT 50000
 #endif
 
 // rgb backlight timeout (in ms)
 #ifdef RGBLIGHT_ENABLE
-#  define RGBLIGHT_TIMEOUT 60000
+#  define RGBLIGHT_TIMEOUT 50000
 #endif

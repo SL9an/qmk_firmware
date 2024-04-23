@@ -27,6 +27,13 @@
   #define RGBLIGHT_VAL_STEP 8
 #endif
 
+/*
+#undef SPLIT_TRANSPORT_MIRROR
+#undef SPLIT_LAYER_STATE_ENABLE
+#undef SPLIT_LED_STATE_ENABLE
+#undef SPLIT_MODS_ENABLE
+*/
+
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
-/* #define SPLIT_USB_DETECT */
-/* #define NO_USB_STARTUP_CHECK */
+//#define SPLIT_USB_DETECT
+//#define NO_USB_STARTUP_CHECK
