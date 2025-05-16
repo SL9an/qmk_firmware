@@ -35,8 +35,11 @@
 #define SPLIT_MODS_ENABLE
 
 // oled timeout (in ms)
+// fade out 15 adds 50s, 3.33s per level
 #ifdef OLED_ENABLE
-#  define OLED_TIMEOUT 50000
+#  define OLED_TIMEOUT 10000
+#  define OLED_FADE_OUT
+#  define OLED_FADE_OUT_INTERVAL 12
 #endif
 
 // rgb matrix timeout (in ms)

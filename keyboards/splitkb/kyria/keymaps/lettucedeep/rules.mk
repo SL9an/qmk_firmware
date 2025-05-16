@@ -17,8 +17,8 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 WPM_ENABLE = yes            # supplies get_current_wpm function for bongocat
 
-MODULAR_BONGOCAT_ENABLE = yes # dake's modular bongocat
-KYRIA_LOGO_ENABLE = yes       # modular bongocat
+MODULAR_BONGOCAT_ENABLE = no  # dake's modular bongocat
+KYRIA_LOGO_ENABLE = no        # modular bongocat
 QMK_LOGO_ENABLE = yes         # modular bongocat
 
 # Modular Bongocat

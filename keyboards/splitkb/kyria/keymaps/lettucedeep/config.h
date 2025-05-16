@@ -16,6 +16,8 @@
 
 #pragma once
 
+#define MASTER_RIGHT
+
 #ifdef OLED_ENABLE
   #define OLED_DISPLAY_128X64
 #endif
