@@ -54,6 +54,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 		other_keycode == KC_D ||
 		other_keycode == KC_T ||
 		other_keycode == KC_G ||
+		other_keycode == KC_R ||
 		other_keycode == KC_W) {
                 return true;
 	    }

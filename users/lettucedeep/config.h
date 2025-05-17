@@ -12,9 +12,9 @@
 #undef TAPPING_FORCE_HOLD
 #define TAPPING_FORCE_HOLD
 #undef TAPPING_TOGGLE
-#define TAPPING_TOGGLE 2
+//#define TAPPING_TOGGLE 2  don't really use tapping toggle
 #undef QUICK_TAP_TERM
-#define QUICK_TAP_TERM 0
+#define QUICK_TAP_TERM 90  // allow quick double-tapping to access hold function
 
 // user mouse key settings
 #ifdef MOUSEKEY_ENABLE

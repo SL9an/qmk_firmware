@@ -16,9 +16,8 @@
  */
 #include QMK_KEYBOARD_H
 
-#ifdef OLED_ENABLE
-    #include "oled.c"
-#endif
+#include "oled.c"
+#include "chordal_hold.c"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
