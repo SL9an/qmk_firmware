@@ -2,6 +2,7 @@ OLED_ENABLE = yes          # Enables the use of OLED displays
 ENCODER_ENABLE = no        # Enables the use of one or more encoders
 RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 RGBLIGHT_ANIMATIONS = no
+RGBMATRIX_ENABLE = no
 
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = yes       # Mouse keys
@@ -20,25 +21,6 @@ WPM_ENABLE = yes            # supplies get_current_wpm function for bongocat
 MODULAR_BONGOCAT_ENABLE = no  # dake's modular bongocat
 KYRIA_LOGO_ENABLE = no        # modular bongocat
 QMK_LOGO_ENABLE = yes         # modular bongocat
-
-# Modular Bongocat
-MODULAR_BONGOCAT_ENABLE ?= no
-ifeq ($(strip $(MODULAR_BONGOCAT_ENABLE)), yes)
-    SRC += modular_bongocat.c
-    OPT_DEFS += -DMODULAR_BONGOCAT_ENABLE
-
-    QMK_LOGO_ENABLE ?= yes
-    KYRIA_LOGO_ENABLE ?= yes
-    ifeq ($(strip $(QMK_LOGO_ENABLE)), yes)
-         OPT_DEFS += -DQMK_LOGO_ENABLE
-    endif
-    ifeq ($(strip $(KYRIA_LOGO_ENABLE)), yes)
-         OPT_DEFS += -DKYRIA_LOGO_ENABLE
-    endif
-
-    OLED_ENABLE = yes
-    OLED_DRIVER_ENABLE = yes
-endif
 
 # added from j-inc
 TAP_DANCE_ENABLE = no

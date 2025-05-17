@@ -16,11 +16,8 @@
 #include QMK_KEYBOARD_H
 
 #include <stdio.h>
-#ifdef MODULAR_BONGOCAT_ENABLE
-#    include "modular_bongocat.h"
-#else
-#    include "oled.c"
-#endif
+#include "oled.c"
+#include "chordal_hold.c"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* 

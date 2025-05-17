@@ -5,8 +5,8 @@
 // user tap/hold settings
 #undef TAPPING_TERM
 #define TAPPING_TERM 350
-#undef IGNORE_MOD_TAP_INTERRUPT
-#define IGNORE_MOD_TAP_INTERRUPT
+#undef CHORDAL_HOLD
+#define CHORDAL_HOLD
 #undef PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD
 #undef TAPPING_FORCE_HOLD

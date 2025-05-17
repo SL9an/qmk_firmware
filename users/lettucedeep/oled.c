@@ -1,6 +1,12 @@
 #include QMK_KEYBOARD_H
 #include <string.h>
 
+// for led caps/scroll/numlock checks
+#include "host_driver.h"
+#include "led.h"
+#define IS_LED_ON(leds, led_name) ((leds) & (1 << (led_name)))
+#define IS_LED_OFF(leds, led_name) (~(leds) & (1 << (led_name)))
+
 
 enum layers {
     _BASE = 0,
@@ -91,10 +97,13 @@ static void render_status(void) {
 
     // Host Keyboard LED Status
     uint8_t led_usb_state = host_keyboard_leds();
+    bool caps_lock = host_keyboard_led_state().caps_lock;
+    bool num_lock = host_keyboard_led_state().num_lock;
+    bool scroll_lock = host_keyboard_led_state().scroll_lock;
     oled_write_P(PSTR("\n   numlck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(IS_LED_ON(led_usb_state, caps_lock) ? PSTR("ON") : PSTR("--"), false);
     oled_write_P(PSTR("\n   caplck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(IS_LED_ON(led_usb_state, num_lock) ? PSTR("ON") : PSTR("--"), false);
     oled_write_P(PSTR("\n   scrlck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(IS_LED_ON(led_usb_state, scroll_lock) ? PSTR("ON") : PSTR("--"), false);
 }
