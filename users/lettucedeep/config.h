@@ -4,7 +4,7 @@
 
 // user tap/hold settings
 #undef TAPPING_TERM
-#define TAPPING_TERM 350
+#define TAPPING_TERM 250
 #undef CHORDAL_HOLD
 #define CHORDAL_HOLD
 #undef PERMISSIVE_HOLD

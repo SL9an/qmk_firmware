@@ -1,30 +1,14 @@
 #include QMK_KEYBOARD_H
 #include <string.h>
 
-// for led caps/scroll/numlock checks
-#include "host_driver.h"
-#include "led.h"
-#define IS_LED_ON(leds, led_name) ((leds) & (1 << (led_name)))
-#define IS_LED_OFF(leds, led_name) (~(leds) & (1 << (led_name)))
 
-
-enum layers {
-    _BASE = 0,
-    _NUMBER,
-    _SYMBOL,
-    _NAV,
-    _MEDIA,
-    _RGB,
-};
-
-
-// slave side info
+// Render Slave OLED (billboard and ctrl/alt/shift/gui modifier status)
 static void render_billboard(const char line_1[], const char line_2[], const char line_3[]) {
     // board info
     oled_write_P(line_1, false);
     oled_write_P(line_2, false);
     oled_write_P(line_3, false);
-    // mod status
+    // mod status left aligned
     uint8_t mods = get_mods();
     char active[19];
     char inactive[19];
@@ -54,6 +38,7 @@ static void render_billboard(const char line_1[], const char line_2[], const cha
     oled_write(active, false);
     // oled_write_P(PSTR(active), false);
 
+    // mod status static positions
     /*
     oled_write_P((mods & MOD_MASK_CTRL) ? PSTR("CTRL ") : PSTR("     "), false);
     oled_write_P((mods & MOD_MASK_ALT) ? PSTR("ALT ") : PSTR("    "), false);
@@ -64,7 +49,7 @@ static void render_billboard(const char line_1[], const char line_2[], const cha
 }
 
 
-// Render Master OLED display
+// Render Master OLED display (layers and num/cap/scroll lock status)
 static void render_status(void) {
 
     // Layer indicator
@@ -96,14 +81,10 @@ static void render_status(void) {
     //oled_write_P(PSTR("\n"), false);
 
     // Host Keyboard LED Status
-    uint8_t led_usb_state = host_keyboard_leds();
-    bool caps_lock = host_keyboard_led_state().caps_lock;
-    bool num_lock = host_keyboard_led_state().num_lock;
-    bool scroll_lock = host_keyboard_led_state().scroll_lock;
     oled_write_P(PSTR("\n   numlck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, caps_lock) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(host_keyboard_led_state().num_lock ? PSTR("ON") : PSTR("--"), false);
     oled_write_P(PSTR("\n   caplck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, num_lock) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(host_keyboard_led_state().caps_lock ? PSTR("ON") : PSTR("--"), false);
     oled_write_P(PSTR("\n   scrlck: "), false);
-    oled_write_P(IS_LED_ON(led_usb_state, scroll_lock) ? PSTR("ON") : PSTR("--"), false);
+    oled_write_P(host_keyboard_led_state().scroll_lock ? PSTR("ON") : PSTR("--"), false);
 }

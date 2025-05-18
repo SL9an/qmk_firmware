@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+
 // per-chord customization
 // @SEE https://docs.qmk.fm/tap_hold#chordal-hold
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
@@ -46,15 +47,14 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 	    break;
 
 	// common left-handed ctrl chords
+	// keep this list small to minimize misfires!
 	case LCTL_T(KC_A):
 	    if (other_keycode == KC_X ||
 		other_keycode == KC_C ||
 		other_keycode == KC_V ||
-		other_keycode == KC_F ||
-		other_keycode == KC_D ||
+		other_keycode == LSFT_T(KC_D) ||
+		other_keycode == LGUI_T(KC_F) ||
 		other_keycode == KC_T ||
-		other_keycode == KC_G ||
-		other_keycode == KC_R ||
 		other_keycode == KC_W) {
                 return true;
 	    }
