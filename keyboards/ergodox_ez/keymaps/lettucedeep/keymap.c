@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX,         XXXXXXX,       XXXXXXX,       MO(_MEDIA),   MO(_NAV),                                                                MO(_NAV),     MO(_MEDIA),   XXXXXXX,       XXXXXXX,         XXXXXXX,
                                                                              XXXXXXX,    XXXXXXX,              XXXXXXX,      XXXXXXX,
                                                                                          KC_VOLU,              KC_BRIU,
-                                                           LT(_NUMBER, KC_SPC), KC_ENT,  KC_VOLD,              KC_BRID, KC_DEL, LT(_SYMBOL, KC_BSPC)
+                                              LT(_NUMBER, KC_SPC), LT(_SYMBOL, KC_ENT),  KC_VOLD,              KC_BRID, LT(_NUMBER, KC_DEL), LT(_SYMBOL, KC_BSPC)
 ),
 
 [_SYMBOL] = LAYOUT_ergodox_pretty(

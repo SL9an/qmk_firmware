@@ -26,19 +26,19 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
         case LT(_NUMBER, KC_SPC):
 	    return true;
             break;
-	
+        case LT(_NUMBER, KC_DEL):
+	    return true;
+            break;
+
 	// symbol layer
 	case LT(_SYMBOL, KC_BSPC):
 	    return true;
 	    break;
+	case LT(_SYMBOL, KC_ENT):
+	    return true;
+	    break;
 	
-	// left-handed cmd/gui chords
-	case LGUI_T(KC_F):
-	    if (other_keycode == KC_TAB) {
-	        return true;
-	    }
-
-	// left-handed space-cadet ctrl chords
+	// left-handed ctrl/esc chords
 	case LCTL_T(KC_ESC):
 	    if (other_keycode == KC_TAB ||
                 other_keycode == KC_Q) {
@@ -56,6 +56,19 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 		other_keycode == LGUI_T(KC_F) ||
 		other_keycode == KC_T ||
 		other_keycode == KC_W) {
+                return true;
+	    }
+	    break;
+
+	// common left-handed gui(cmd) chords (for mac)
+	// keep this list small to minimize misfires!
+	case LGUI_T(KC_F):
+	    if (other_keycode == KC_X ||
+		other_keycode == KC_C ||
+		other_keycode == KC_V ||
+		other_keycode == LSFT_T(KC_D) ||
+		other_keycode == KC_W ||
+		other_keycode == KC_TAB) {
                 return true;
 	    }
 	    break;
