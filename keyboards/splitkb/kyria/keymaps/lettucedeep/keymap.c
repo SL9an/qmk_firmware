@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include "layers.c"
 #include "chordal_hold.c"
+#include "flow_tap.c"
 #include "oled.c"
 
 

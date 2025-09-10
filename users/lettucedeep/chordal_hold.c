@@ -5,6 +5,11 @@
 // @SEE https://docs.qmk.fm/tap_hold#chordal-hold
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                       uint16_t other_keycode, keyrecord_t* other_record) {
+    // Allowed exceptions based on other_keycode
+    if (other_keycode == MO(_NAV)) {
+	return true;
+    }
+
     // Exceptionally allow some one-handed chords for hotkeys.
     switch (tap_hold_keycode) {
 	// nav layer
@@ -52,6 +57,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 	    if (other_keycode == KC_X ||
 		other_keycode == KC_C ||
 		other_keycode == KC_V ||
+		other_keycode == KC_R ||  // vim redo
 		other_keycode == LSFT_T(KC_D) ||
 		other_keycode == LGUI_T(KC_F) ||
 		other_keycode == KC_T ||

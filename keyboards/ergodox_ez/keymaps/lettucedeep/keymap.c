@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "layers.c"
 #include "chordal_hold.c"
+#include "flow_tap.c"
 
 
 

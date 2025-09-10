@@ -87,4 +87,5 @@ static void render_status(void) {
     oled_write_P(host_keyboard_led_state().caps_lock ? PSTR("ON") : PSTR("--"), false);
     oled_write_P(PSTR("\n   scrlck: "), false);
     oled_write_P(host_keyboard_led_state().scroll_lock ? PSTR("ON") : PSTR("--"), false);
+    oled_advance_page(true);
 }
